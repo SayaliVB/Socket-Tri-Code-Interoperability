@@ -1,6 +1,5 @@
 
-import org.junit.Test;
-import static org.junit.Assertions.*;
+import org.junit.*;
 
 import gash.payload.BasicBuilder;
 import gash.payload.Message;
@@ -14,13 +13,13 @@ public class BuilderTest {
 		BasicBuilder builder = new BasicBuilder();
 
 		String s = builder.encode(new Message(n,g,t));
-		assertEquals(msg,s);
+		Assert.assertEquals(msg,s);
 
 		System.out.println("msg: " + s);
 
 		var m = builder.decode(s.getBytes());
-		Assertions.assertEquals(m.getName(),n);
-		Assertions.assertEquals(m.getGroup(), g);
-		Assertions.assertEquals(m.getText(),t);
+		Assert.assertEquals(m.getName(),n);
+		Assert.assertEquals(m.getGroup(), g);
+		Assert.assertEquals(m.getText(),t);
 	}
 }

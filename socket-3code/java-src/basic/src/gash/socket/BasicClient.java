@@ -30,6 +30,7 @@ public class BasicClient {
 				this.clt.close();
 			} catch (IOException e) {
 				// TODO better error handling? yes!
+
 				e.printStackTrace();
 			}
 		}
@@ -63,7 +64,8 @@ public class BasicClient {
 			BasicBuilder builder = new BasicBuilder();
 			byte[] msg = builder.encode(new Message(name, group, message)).getBytes();
 			this.clt.getOutputStream().write(msg);
-		} catch (Exception e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

@@ -15,6 +15,14 @@ import gash.socket.BasicClient;
 public class ClientApp {
 	private BasicClient myClient;
 
+	public BasicClient getMyClient() {
+		return myClient;
+	}
+
+	public void setMyClient(BasicClient myClient) {
+		this.myClient = myClient;
+	}
+
 	public ClientApp() {
 	}
 
@@ -31,7 +39,7 @@ public class ClientApp {
 				if (m.length() == 0 || "exit".equalsIgnoreCase(m))
 					break;
 
-				myClient.sendMessage(m);
+				myClient.sendMessage(m); 
 			} catch (Exception ex) {
 				break;
 			}
