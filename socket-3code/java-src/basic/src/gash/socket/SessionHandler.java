@@ -1,8 +1,10 @@
 package gash.socket;
 
 import java.io.BufferedInputStream;
-import java.io.InterruptedIOException;
+import java.io.IOException;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 import gash.payload.BasicBuilder;
 import gash.payload.Message;
@@ -13,13 +15,19 @@ import gash.payload.Message;
  * @author gash
  */
 class SessionHandler extends Thread {
+    private static final Logger logger = Logger.getLogger(SessionHandler.class.getName());
+
     private Socket connection;
     private String host;
     private boolean forever = true;
+    private AtomicInteger totalRequests;
+    private AtomicInteger failedRequests;
 
-    public SessionHandler(Socket connection, String host) {
+    public SessionHandler(Socket connection, String host, AtomicInteger totalRequests, AtomicInteger failedRequests) {
         this.connection = connection;
         this.host = host;
+        this.totalRequests = totalRequests;
+        this.failedRequests = failedRequests;
         // allow server to exit if
         this.setDaemon(true);
     }
@@ -32,8 +40,8 @@ class SessionHandler extends Thread {
         if (connection != null && !connection.isClosed()) {
             try {
                 connection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException e) {
+                logger.warning("Error while closing connection: " + e.getMessage());
             }
         }
     }
@@ -41,45 +49,41 @@ class SessionHandler extends Thread {
     /**
      * Process incoming data
      */
+    @Override
     public void run() {
-        System.out.println("Session for Host " + host + " started");
+        logger.info("Session for Host " + host + " started");
 
         try {
-            connection.setSoTimeout(2000);
-            var in = new BufferedInputStream(connection.getInputStream());
+            processIncomingData();
+        } catch (IOException e) {
+            logger.warning("Error during session: " + e.getMessage());
+            // Record failed request
+            failedRequests.incrementAndGet();
+        } finally {
+            logger.info("Session for Host " + host + " ending");
+            stopSession();
+        }
+    }
 
-            /**if (in == null) {
-                throw new RuntimeException("Unable to get input streams");
-            }**/
-
+    private void processIncomingData() throws IOException {
+        try (var in = new BufferedInputStream(connection.getInputStream())) {
             byte[] raw = new byte[2048];
             BasicBuilder builder = new BasicBuilder();
             while (forever) {
-                try {
-                    int len = in.read(raw);
-                    if (len == 0) {
-                        continue;
-                    } else if (len == -1) {
-                        break;
-                    }
-
+                int len = in.read(raw);
+                if (len > 0) {
                     Message msg = builder.decode(new String(raw, 0, len).getBytes());
-                    System.out.println("[" + host + "] " + msg);
-
-                } catch (InterruptedIOException ioe) {
-                    // Handle InterruptedIOException more gracefully if needed
+                    logger.info("[" + host + "] " + msg);
+                    // Increment successful requests
+                    totalRequests.incrementAndGet();
+                } else if (len == -1) {
+                    forever = false;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                System.out.println("Session for Host " + host + " ending");
-                System.out.flush();
-                stopSession();
-            } catch (Exception re) {
-                re.printStackTrace();
-            }
+            // Record failed request
+            failedRequests.incrementAndGet();
         }
     }
-} // class SessionHandler
+}

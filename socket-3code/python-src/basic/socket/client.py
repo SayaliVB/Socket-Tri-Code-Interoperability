@@ -88,12 +88,18 @@ class BasicClient():
         stime = time()
         msg = bldr.encode(self.name,self.group,text) #, str(stime)
         self._clt.send(bytes(msg, "utf-8"))
-        response = self._clt.recv(2048)
-        if len(response) <= 0:
-            return False
-        rtime = time()
-        name,group,text = bldr.decode(response.decode("utf-8")) #,time1
+
+        # uncomment for acknowledgement from server
+
+        # response = self._clt.recv(2048)
+        # if len(response) <= 0:
+        #     return False
+        # name,group,text = bldr.decode(response.decode("utf-8")) #,time1
+
+
         #print("recieved back "+ time1 + " at " + str(rtime))
+
+        rtime = time()
 
         print("Total response time: " + str(rtime - stime))
         print("\n\n")
