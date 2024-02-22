@@ -109,8 +109,8 @@ class SessionHandler(threading.Thread):
             #print("in try")
             bldr = BasicBuilder()
             #print("build init")
-            name,group,text,time1 = bldr.decode(raw)
-            print(f"from {name}, to group: {group}, text: {text} , sent at {time1} recvd at {str(time2)}")
+            name,group,text = bldr.decode(raw) #,time1
+            print(f"from {name}, to group: {group}, text: {text} ,recvd at {str(time2)}") # sent at {time1} 
         #unused variable e
         #Catching too general exception
         except Exception:

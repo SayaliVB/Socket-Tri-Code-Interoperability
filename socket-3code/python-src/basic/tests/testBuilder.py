@@ -19,10 +19,10 @@ class TestBuilder(unittest.TestCase):
         n = "fred"
         g = "dogs"
         t = "hello"
-        time = "1234"
+        #time = "1234"
 
         b = BasicBuilder()
-        r = b.encode(n,g,t,time)
+        r = b.encode(n,g,t) #,time
         print(f"encoded: {r}")
 
         parts = b.decode(r)
@@ -30,7 +30,7 @@ class TestBuilder(unittest.TestCase):
         self.assertEqual(n,parts[0])
         self.assertEqual(g,parts[1])
         self.assertEqual(t,parts[2])
-        self.assertEqual(time,parts[3])
+        #self.assertEqual(time,parts[3])
 
 if __name__ == '__main__':
     unittest.main()

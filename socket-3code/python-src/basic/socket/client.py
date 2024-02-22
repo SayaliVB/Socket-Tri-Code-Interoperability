@@ -86,14 +86,14 @@ class BasicClient():
         bldr = BasicBuilder()
         #linter warning redefining name from outer scope
         stime = time()
-        msg = bldr.encode(self.name,self.group,text, str(stime))
+        msg = bldr.encode(self.name,self.group,text) #, str(stime)
         self._clt.send(bytes(msg, "utf-8"))
         response = self._clt.recv(2048)
         if len(response) <= 0:
             return False
         rtime = time()
-        name,group,text,time1 = bldr.decode(response.decode("utf-8"))
-        print("recieved back "+ time1 + " at " + str(rtime))
+        name,group,text = bldr.decode(response.decode("utf-8")) #,time1
+        #print("recieved back "+ time1 + " at " + str(rtime))
 
         print("Total response time: " + str(rtime - stime))
         print("\n\n")
@@ -129,6 +129,7 @@ if __name__ == '__main__':
         successful_requests = 0
         failed_requests = 0
         timestart = time()
+        total_requests = 2000 if total_requests<0 or total_requests >2000 else total_requests
         for _ in range(total_requests):
             if clt.send_msg(m):
                 successful_requests += 1
