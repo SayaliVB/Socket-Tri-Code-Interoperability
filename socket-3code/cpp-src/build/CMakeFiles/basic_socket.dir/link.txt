@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbasic_socket.a CMakeFiles/basic_socket.dir/payload/basicbuilder.o CMakeFiles/basic_socket.dir/socket/sessionhandler.o CMakeFiles/basic_socket.dir/socket/client.o CMakeFiles/basic_socket.dir/socket/server.o
+/usr/bin/ranlib libbasic_socket.a

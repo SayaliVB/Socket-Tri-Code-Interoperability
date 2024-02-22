@@ -13,6 +13,20 @@ if (CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 12.0)
    # on apple's aarch64 under gcc. Maybe with clang/xcode. Also, consider 
    # -fsanitize-address-use-after-scope
    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+   # Choose the sanitizer you want to enable:
+
+   # AddressSanitizer
+   # set(SANITIZE_ADDRESS "-fsanitize=address -fsanitize-address-use-after-scope")
+   # ThreadSanitizer
+   # set(SANITIZE_THREAD "-fsanitize=thread")
+
+   # Enable the desired sanitizer (uncomment the one you need)
+   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SANITIZE_ADDRESS}")
+
+   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SANITIZE_THREAD}")
+
+   # Additional flags for sanitizer (if needed)
+   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fno-omit-frame-pointer")
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 16.0)
    # matches clang and apple/clang
    

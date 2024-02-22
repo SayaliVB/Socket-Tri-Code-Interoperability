@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <iostream>
+#include <chrono>
 
 #include "socket/client.hpp"
 #include "payload/basicbuilder.hpp"
@@ -17,19 +18,23 @@ basic::BasicClient::BasicClient(std::string name, std::string ipaddr, unsigned i
       this->good = false;
       this->clt = -1;
 
-      if (this->portN <= 1024)
-         throw std::out_of_range("port must be greater than 1024");
+      if (this->portN <= 1024 || this->portN > 65535)
+         throw std::out_of_range("Port must be between 1025 and 65535");
 }
 
 void basic::BasicClient::stop() {
-   std::cerr << "--> closing client connection" << std::endl;
-   this->good = false;
-
-   if (this->clt > -1) {
-      ::close(this->clt);
-      this->clt = -1;
+    std::cerr << "--> Attempting to close client connection..." << std::endl;
+    if (this->good) {
+        this->good = false;
+        if (this->clt > -1) {
+            ::close(this->clt);
+            this->clt = -1;
+            std::cerr << "--> Client connection closed." << std::endl;
+         }
+   } else {
+      std::cerr << "--> Client connection already closed or not established." << std::endl;
    }
-} 
+}
 
 void basic::BasicClient::join(std::string group){
    this->group = group;
@@ -40,8 +45,10 @@ void basic::BasicClient::sendMessage(std::string m) {
 
    basic::Message msg(this->name,this->group,m);
    basic::BasicBuilder bldr;
-   auto payload = bldr.encode(msg); 
+   auto payload = bldr.encode(msg);
    auto plen = payload.length();
+
+   auto start_time = std::chrono::high_resolution_clock::now();
 
    while (this->good) {
       auto n = ::write(this->clt, payload.c_str(), plen);
@@ -62,6 +69,11 @@ void basic::BasicClient::sendMessage(std::string m) {
    
       break;
    }
+
+   auto end_time = std::chrono::high_resolution_clock::now(); // Record end time
+   auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time); // Calculate duration in microseconds
+
+   std::cout << "Time taken to send message: " << duration.count() << " microseconds" << std::endl;
 }
 
 void basic::BasicClient::connect() {

@@ -1,10 +1,14 @@
 # src files. For inlined headers, include header as a source
 set(lib-srcs
         payload/message.hpp
+        payload/basicbuilder.hpp
         payload/basicbuilder.cpp
         socket/sessionhandler.cpp
+        socket/sessionhandler.hpp
         socket/client.cpp
+        socket/client.hpp
         socket/server.cpp
+        socket/server.hpp
 )
 
 # library targets

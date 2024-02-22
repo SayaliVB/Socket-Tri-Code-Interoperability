@@ -1,0 +1,75 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "basic_socket::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-basic_socket-Debug-7eee0fe4f3e8b2c1c8a9.json",
+					"name" : "basic_socket",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "clientApp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clientApp-Debug-eb758ac812a47b9877d2.json",
+					"name" : "clientApp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "serverApp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-serverApp-Debug-64141a144d18419ee207.json",
+					"name" : "serverApp",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+		"source" : "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/basic_socket.dir/payload/basicbuilder.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/payload/basicbuilder.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/payload/basicbuilder.cpp",
+  "output": "CMakeFiles/basic_socket.dir/payload/basicbuilder.o"
+},
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/basic_socket.dir/socket/sessionhandler.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/sessionhandler.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/sessionhandler.cpp",
+  "output": "CMakeFiles/basic_socket.dir/socket/sessionhandler.o"
+},
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/basic_socket.dir/socket/client.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/client.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/client.cpp",
+  "output": "CMakeFiles/basic_socket.dir/socket/client.o"
+},
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/basic_socket.dir/socket/server.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/server.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/socket/server.cpp",
+  "output": "CMakeFiles/basic_socket.dir/socket/server.o"
+},
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/serverApp.dir/apps/ServerApp.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/apps/ServerApp.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/apps/ServerApp.cpp",
+  "output": "CMakeFiles/serverApp.dir/apps/ServerApp.o"
+},
+{
+  "directory": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-13   -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/clientApp.dir/apps/clientApp.o -c \"/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/apps/clientApp.cpp\"",
+  "file": "/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/basic/src/apps/clientApp.cpp",
+  "output": "CMakeFiles/clientApp.dir/apps/clientApp.o"
+}
+]

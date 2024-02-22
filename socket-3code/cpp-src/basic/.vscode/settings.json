@@ -87,6 +87,8 @@
         "__tree": "cpp",
         "map": "cpp",
         "regex": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__verbose_abort": "cpp",
+        "charconv": "cpp"
     }
 }

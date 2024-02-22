@@ -15,8 +15,8 @@ basic::BasicServer::BasicServer(std::string ipaddr, unsigned int port) {
       this->good = false;
       this->svr = -1; // 0 is valid
 
-      if (this->portN <= 1024)
-         throw std::out_of_range("port must be greater than 1024");
+      if (this->portN <= 1024 || this->portN > 65535)
+         throw std::out_of_range("Port must be between 1025 and 65535");
 }
 
 void basic::BasicServer::stop() {

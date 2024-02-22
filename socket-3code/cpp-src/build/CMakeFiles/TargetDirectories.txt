@@ -1,0 +1,9 @@
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/basic_socket.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/serverApp.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/clientApp.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/edit_cache.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/rebuild_cache.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/list_install_components.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/install.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/install/local.dir
+/Users/hrithik/Desktop/Sem 2/275/socket/socket-3code 2/cpp-src/build/CMakeFiles/install/strip.dir
