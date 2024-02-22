@@ -100,15 +100,17 @@ class SessionHandler(threading.Thread):
         self._cltconn = None
         self.good = False
 
-    def process(self,raw):
+    def process(self,raw, time2):
         '''
         linter warning: Missing method docstring
         recives and processes data from and client
         '''
         try:
+            #print("in try")
             bldr = BasicBuilder()
-            name,group,text = bldr.decode(raw)
-            print(f"from {name}, to group: {group}, text: {text} , at {str(time())}")
+            #print("build init")
+            name,group,text,time1 = bldr.decode(raw)
+            print(f"from {name}, to group: {group}, text: {text} , sent at {time1} recvd at {str(time2)}")
         #unused variable e
         #Catching too general exception
         except Exception:
@@ -118,10 +120,13 @@ class SessionHandler(threading.Thread):
         while self.good:
             try:
                 buf = self._cltconn.recv(2048)
+                #print(len(buf))
                 if len(buf) <= 0:
                     self.good = False
                 else:
-                    self.process(buf.decode("utf-8"))
+                    #print("in else")
+                    self.process(buf.decode("utf-8"), time())
+                    self._cltconn.sendall(buf)
             #Catching too general exception
             except Exception as e:
                 print(e)

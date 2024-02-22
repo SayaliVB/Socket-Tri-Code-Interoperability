@@ -85,8 +85,19 @@ class BasicClient():
         print(f"sending to group {self.group} from {self.name}: {text}")
         bldr = BasicBuilder()
         #linter warning redefining name from outer scope
-        msg = bldr.encode(self.name,self.group,text)
+        stime = time()
+        msg = bldr.encode(self.name,self.group,text, str(stime))
         self._clt.send(bytes(msg, "utf-8"))
+        response = self._clt.recv(2048)
+        if len(response) <= 0:
+            return False
+        rtime = time()
+        name,group,text,time1 = bldr.decode(response.decode("utf-8"))
+        print("recieved back "+ time1 + " at " + str(rtime))
+
+        print("Total response time: " + str(rtime - stime))
+        print("\n\n")
+        return True
 
     def groups(self):
         '''
@@ -107,9 +118,26 @@ if __name__ == '__main__':
     clt = BasicClient("frida_kahlo","127.0.0.1",2000)
     while True:
         m = input("enter message: ")
+
         #linter warning: merge comparisons
         #unnecessary else after break
+
         if m in ('', 'exit'):
             break
-        for i in range (2):
-            clt.send_msg(m + " at " + str(time()))
+
+        total_requests = int(input("enter number of times: "))
+        successful_requests = 0
+        failed_requests = 0
+        timestart = time()
+        for _ in range(total_requests):
+            if clt.send_msg(m):
+                successful_requests += 1
+            else:
+                failed_requests += 1
+        timeend = time()
+
+        print("Successful Requests:", successful_requests)
+        print("Failed Requests:", failed_requests)
+        print("Failure Rate:", (failed_requests / total_requests) * 100, "%")
+        print("Throughput:", successful_requests / (timeend - timestart), "requests per second")
+
