@@ -15,8 +15,8 @@ public class BasicBuilder {
 	public String encode(Message msg) {
 		var sb = new StringBuilder();
 		sb.append(msg.getGroup()).append(",").append(msg.getName()).append(",").append(msg.getText());
-
-		return sb.toString();
+		
+		return sb.length()+", " + sb.toString();
 	}
 
 	public Message decode(byte[] raw) throws Exception {
@@ -24,8 +24,8 @@ public class BasicBuilder {
 			return null;
 
 		var s = new String(raw);
-		var parts = s.split(",", 3);
-		var rtn = new Message(parts[1], parts[0], parts[2]);
+		var parts = s.split(",", 4);
+		var rtn = new Message(parts[2], parts[1], parts[3]);
 
 		return rtn;
 	}
